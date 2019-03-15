@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="81dp">
+//TODO: make all strings in activity_main.xml reference strings.xml
+
+    <LinearLayout
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/student_loan_total"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Student Loan Total"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/student_loan_monthly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Student Loan Monthly"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/car_loans_monthly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Car Loans Total"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/car_loans_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Car Loans Monthly"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/credit_cards_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Credit Cards Total"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/credit_cards_monthly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Credit Cards Monthly"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/edit_finished_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="How much money to sustain your lifestyle?"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/house_total_worth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="What do you think your house is worth?"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/house_monthly_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Monthly house payment"
+            android:inputType="number" />
+
+        <Spinner
+            android:id="@+id/type_of_loan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/loan_types"
+            android:prompt="@string/loan_type_prompt" />
+
+        <EditText
+            android:id="@+id/number_of_years"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Number of years"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/interest_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Interest Rate"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/current_balance_mortgage_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Current balance of Mortgage 1"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/current_balance_mortgage_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Current balance of Mortgage 2"
+            android:inputType="numberDecimal" />
+
+        <Spinner
+            android:id="@+id/child_education"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/children_support_array"
+            android:prompt="@string/children_support_prompt" />
+
+        <EditText
+            android:id="@+id/cost_of_education"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Approximate Cost for Education"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/amount_saved_education"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Amount Saved"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/client_life"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Client Life Insurance"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/type_life"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Type Life Insurance"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/carrier_life"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Carrier Life Insurance"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/spouse_life"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Spouse Life Insurance"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/spouse_type_life"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Type Life Insurance"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/spouse_carrier_life"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Carrier Life Insurance"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit and Email Information"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+    </LinearLayout>
+
+</ScrollView>

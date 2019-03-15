@@ -1,0 +1,20 @@
+<resources>
+
+    <string name="app_name">16thingsApp</string>
+
+    <string-array name="loan_types">
+        <item>Fixed</item>
+        <item>Adjustable</item>
+    </string-array>
+
+    <string name="loan_type_prompt">Choose a loan type</string>
+
+    <string-array name="children_support_array">
+        <item>No</item>
+        <item>All</item>
+        <item>Part</item>
+    </string-array>
+
+    <string name="children_support_prompt">"Would you like to provide for your Children's Education?"</string>
+
+</resources>

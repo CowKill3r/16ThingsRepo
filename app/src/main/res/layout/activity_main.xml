@@ -215,6 +215,14 @@
             android:hint="Carrier Life Insurance"
             android:inputType="text" />
 
+        <EditText
+            android:id="@+id/email_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="email"
+            android:inputType="textWebEmailAddress" />
+
         <Button
             android:id="@+id/submit_button"
             android:layout_width="match_parent"

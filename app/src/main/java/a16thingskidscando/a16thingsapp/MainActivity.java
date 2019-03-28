@@ -2,6 +2,7 @@ package a16thingskidscando.a16thingsapp;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,10 +27,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         //TODO add all editTexts and Spinners here to initialize
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
-        submitButton = (Button)findViewById(R.id.submit_button);
+        submitButton = (Button) findViewById(R.id.submit_button);
         submitButton.setOnClickListener(this);
-        userEmail = (EditText)findViewById(R.id.email_edit_text);
+        userEmail = (EditText) findViewById(R.id.email_edit_text);
     }
 
     //TODO email results to email that the user has put in

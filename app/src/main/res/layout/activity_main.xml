@@ -221,7 +221,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="email"
-            android:inputType="textWebEmailAddress" />
+        />
 
         <Button
             android:id="@+id/submit_button"

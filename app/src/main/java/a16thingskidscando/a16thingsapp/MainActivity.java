@@ -28,8 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Session session = null;
     ProgressDialog pdialog = null;
     Context context = null;
-    EditText recipient, sub ,msg;
-    String rec, subject, textMessage;
+    EditText recipient, sub ,msg, msg2, studentLoanTotal, studentLoanMonthly, carLoansTotal, carLoansMonthly; //TODO add all of the input field edit texts here
+    String rec, subject, textMessage, textMessage2, studentLoanTotalString, studentLoanMonthlyString,
+            carLoansTotalString, carLoansMonthlyString; //TODO add all the resulting strings here (initialize)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button sendToEmail = findViewById(R.id.submit_button);
         recipient = (EditText) findViewById(R.id.email_edit_text);
         sub = (EditText) findViewById(R.id.spouse_carrier_life);
+        //TODO add edittexts here
         msg = (EditText) findViewById(R.id.spouse_life);
+
+        msg2 = (EditText) findViewById(R.id.spouse_type_life);
+        studentLoanTotal = (EditText) findViewById(R.id.student_loan_total);
+        studentLoanMonthly = (EditText) findViewById(R.id.student_loan_monthly);
+
+        carLoansTotal = (EditText) findViewById(R.id.car_loans_total);
+        carLoansMonthly = (EditText) findViewById(R.id.car_loans_monthly);
 
         sendToEmail.setOnClickListener(this);
     }
@@ -51,6 +60,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rec = recipient.getText().toString();
         subject = sub.getText().toString();
         textMessage = msg.getText().toString();
+        //all input fields should have individual variables
+        //TODO make all input field variables verbose, also add strings to show in email here
+        textMessage2 = msg2.getText().toString();
+
+        studentLoanTotalString = studentLoanTotal.getText().toString();
+        studentLoanMonthlyString = studentLoanMonthly.getText().toString();
+
+        carLoansTotalString = carLoansTotal.getText().toString();
+        carLoansMonthlyString = carLoansMonthly.getText().toString();
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -80,7 +98,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress("testeremail3345@gmail.com"));
                 message.setRecipient(Message.RecipientType.TO, InternetAddress.parse(rec)[0]);
-                message.setContent(textMessage, "text/html; charset=utf-8");
+                //message.setContent is what goes in the body of the email
+                message.setContent( "Student Loan Total: "                      + studentLoanTotalString    + "<br>"
+                                    + "Student Loan Monthly: "                  + studentLoanMonthlyString  + "<br>"
+                                    + "Car Loans Total: "                       + carLoansTotalString       + "<br>"
+                                    + "Car Loans Monthly: "                     + carLoansMonthlyString     + "<br>"
+                                    + "Type of Life Insurance for Spouse: "     + textMessage2              + "<br>"
+                                    + "Spouse Life Insurance: "                 + textMessage, "text/html; charset=utf-8");
 
                 Transport.send(message);
             } catch(MessagingException e){

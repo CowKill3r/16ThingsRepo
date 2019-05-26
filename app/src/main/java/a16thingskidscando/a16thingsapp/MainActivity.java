@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.Properties;
@@ -28,9 +29,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Session session = null;
     ProgressDialog pdialog = null;
     Context context = null;
-    EditText recipient, sub ,msg, msg2, studentLoanTotal, studentLoanMonthly, carLoansTotal, carLoansMonthly; //TODO add all of the input field edit texts here
-    String rec, subject, textMessage, textMessage2, studentLoanTotalString, studentLoanMonthlyString,
-            carLoansTotalString, carLoansMonthlyString; //TODO add all the resulting strings here (initialize)
+
+    EditText recipient, sub ,msg, msg2, studentLoanTotal, studentLoanMonthly, carLoansTotal, carLoansMonthly,
+                creditCardsTotal, creditCardsMonthly, sustainLifeStyle, houseTotalWorth, houseMonthlyPayment,
+                numberOfYears, interestRate, currBalanceMort1, currBalanceMort2, educationCost, amountSaveEducation,
+                clientLifeInsurance, clientTypeLifeInsurance, carrierLifeInsurance, spouseCarrier, spouseLifeInsurance,
+                spouseTypeLifeInsurance; //TODO add all of the input field edit texts here
+
+    Spinner typeOfLoan, childEducation; //spinners go here
+
+    String rec, subject, spouseLifeInsuranceString, spouseTypeLifeInsuranceString, studentLoanTotalString, studentLoanMonthlyString,
+            carLoansTotalString, carLoansMonthlyString, creditCardsTotalString, creditCardsMonthlyString,
+            sustainLifeStyleString, houseTotalWorthString, houseMonthlyPaymentString, typeOfLoanString,
+            numberOfYearsString, interestRateString, currBalanceMort1String, currBalanceMort2String,
+            childEducationString, educationCostString, amountSaveEducationString, clientLifeInsuranceString,
+            clientTypeLifeInsuranceString, carrierLifeInsuranceString, spouseCarrierString, textMessage, textMessage2; //TODO add all the resulting strings here (initialize)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +65,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         carLoansTotal = (EditText) findViewById(R.id.car_loans_total);
         carLoansMonthly = (EditText) findViewById(R.id.car_loans_monthly);
 
+        creditCardsMonthly = (EditText) findViewById(R.id.credit_cards_monthly);
+        creditCardsTotal = (EditText) findViewById(R.id.credit_cards_total);
+
+        sustainLifeStyle = (EditText) findViewById(R.id.how_much_to_sustain_lifestyle);
+
+        houseTotalWorth = (EditText) findViewById(R.id.house_total_worth);
+        houseMonthlyPayment = (EditText) findViewById(R.id.house_monthly_payment);
+
+        numberOfYears = (EditText) findViewById(R.id.number_of_years);
+        interestRate = (EditText) findViewById(R.id.interest_rate);
+
+        typeOfLoan = (Spinner) findViewById(R.id.type_of_loan);
+
+        currBalanceMort1 = (EditText) findViewById(R.id.current_balance_mortgage_1);
+        currBalanceMort2 = (EditText) findViewById(R.id.current_balance_mortgage_2);
+
+        childEducation = (Spinner) findViewById(R.id.child_education);
+
+        educationCost = (EditText) findViewById(R.id.cost_of_education);
+
+        amountSaveEducation = (EditText) findViewById(R.id.amount_saved_education);
+
+        clientLifeInsurance = (EditText) findViewById(R.id.client_life);
+        clientTypeLifeInsurance = (EditText) findViewById(R.id.type_life);
+
+        carrierLifeInsurance = (EditText) findViewById(R.id.carrier_life);
+
+        spouseCarrier = (EditText) findViewById(R.id.spouse_carrier_life);
+        spouseLifeInsurance = (EditText) findViewById(R.id.spouse_life);
+        spouseTypeLifeInsurance = (EditText) findViewById(R.id.spouse_type_life);
+
         sendToEmail.setOnClickListener(this);
     }
 
@@ -69,6 +113,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         carLoansTotalString = carLoansTotal.getText().toString();
         carLoansMonthlyString = carLoansMonthly.getText().toString();
+
+        creditCardsMonthlyString = creditCardsMonthly.getText().toString();
+        creditCardsTotalString = creditCardsTotal.getText().toString();
+
+        sustainLifeStyleString = sustainLifeStyle.getText().toString();
+
+        houseTotalWorthString = houseTotalWorth.getText().toString();
+        houseMonthlyPaymentString = houseMonthlyPayment.getText().toString();
+
+        typeOfLoanString = typeOfLoan.getSelectedItem().toString();
+
+        numberOfYearsString = numberOfYears.getText().toString();
+        interestRateString = interestRate.getText().toString();
+
+        currBalanceMort1String = currBalanceMort1.getText().toString();
+        currBalanceMort2String = currBalanceMort2.getText().toString();
+
+        childEducationString = childEducation.getSelectedItem().toString();
+
+        educationCostString = educationCost.getText().toString();
+
+        amountSaveEducationString = amountSaveEducation.getText().toString();
+
+        clientTypeLifeInsuranceString = clientTypeLifeInsurance.getText().toString();
+        clientLifeInsuranceString = clientLifeInsurance.getText().toString();
+
+        carrierLifeInsuranceString = carrierLifeInsurance.getText().toString();
+        spouseCarrierString = spouseCarrier.getText().toString();
+
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -98,13 +171,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress("testeremail3345@gmail.com"));
                 message.setRecipient(Message.RecipientType.TO, InternetAddress.parse(rec)[0]);
-                //message.setContent is what goes in the body of the email
-                message.setContent( "Student Loan Total: "                      + studentLoanTotalString    + "<br>"
-                                    + "Student Loan Monthly: "                  + studentLoanMonthlyString  + "<br>"
-                                    + "Car Loans Total: "                       + carLoansTotalString       + "<br>"
-                                    + "Car Loans Monthly: "                     + carLoansMonthlyString     + "<br>"
-                                    + "Type of Life Insurance for Spouse: "     + textMessage2              + "<br>"
-                                    + "Spouse Life Insurance: "                 + textMessage, "text/html; charset=utf-8");
+                //message.setContent is what goes in the body of the email <br> is html to set a newline since it's being sent to an email address
+                message.setContent( "Student Loan Total: "                                      + studentLoanTotalString        + "<br>"
+                                    + "Student Loan Monthly: "                                  + studentLoanMonthlyString      + "<br>"
+                                    + "Car Loans Total: "                                       + carLoansTotalString           + "<br>"
+                                    + "Car Loans Monthly: "                                     + carLoansMonthlyString         + "<br>"
+                                    + "Credit Cards Total: "                                    + creditCardsTotalString        + "<br>"
+                                    + "Credit Cards Monthly: "                                  + creditCardsMonthlyString      + "<br>"
+                                    + "Total Cost to Sustain Lifestyle: "                       + sustainLifeStyleString        + "<br>"
+                                    + "House Total : "                                          + houseTotalWorthString         + "<br>"
+                                    + "House Monthly Payment: "                                 + houseMonthlyPaymentString     + "<br>"
+                                    + "The type of loan is: "                                   + typeOfLoanString              + "<br>" // (fixed/adjustable)
+                                    + "Number of years to pay off : "                           + numberOfYearsString           + "<br>"
+                                    + "The interest rate is: "                                  + interestRateString            + "<br>"
+                                    + "Current Balance of First Mortgage: "                     + currBalanceMort1String        + "<br>"
+                                    + "Current Balance of Second Mortgage: "                    + currBalanceMort2String        + "<br>"
+                                    + "Would you like to provide for your child's education?: " + childEducationString          + "<br>" // (yes/no/part)
+                                    + "Approximate cost for education: "                        + educationCostString           + "<br>"
+                                    + "Amount of money save for Education: "                    + amountSaveEducationString     + "<br>"
+                                    + "Client Life Insurance: "                                 + clientLifeInsuranceString     + "<br>"
+                                    + "Client Type of Life Insurance: "                         + clientTypeLifeInsuranceString + "<br>"
+                                    + "Client Carrier Life Insurance: "                         + carrierLifeInsuranceString    + "<br>"
+                                    + "Spouse Life Insurance: "                                 + textMessage                   + "<br>"
+                                    + "Spouse Type of Life Insurance: "                         + textMessage2                  + "<br>"
+                                    + "Spouse Carrier Life Insurance: "                         + spouseCarrierString, "text/html; charset=utf-8");
 
                 Transport.send(message);
             } catch(MessagingException e){

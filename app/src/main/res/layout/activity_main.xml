@@ -82,7 +82,7 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/edit_finished_date"
+            android:id="@+id/how_much_to_sustain_lifestyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
